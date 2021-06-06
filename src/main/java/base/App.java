@@ -39,7 +39,8 @@ public class App {
         int length = myApp.readLength();
         int width = myApp.readWidth();
         int f2 = myApp.squareFeet(length, width);
-        final int galNeed = (int) Math.ceil((double)f2 / 350);
+        final int convert = Math.round((int) Math.ceil((double)f2 / 350));
+        int galNeed = Math.round(convert);
         String outputString = myApp.generateOutputString(length, width, f2, galNeed);
         myApp.printOutput(outputString);
     }
@@ -62,7 +63,7 @@ public class App {
         return length * width;
     }
 
-    public String generateOutputString(int length, int width, double f2, int galNeed) {
+    public String generateOutputString(int length, int width, int f2, int galNeed) {
         return "You entered dimensions of " + length + " feet by " + width + " feet.\n" +
                 "Your ceiling would be " + f2 + " square feet.\n" +
                 "You will need to purchase " + galNeed + " gallons of paint to cover " + f2 + " square feet.";
