@@ -35,6 +35,36 @@ public class App {
     static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        
+        App myApp = new App();
+        int length = myApp.readLength();
+        int width = myApp.readWidth();
+        int f2 = myApp.squareFeet(length, width);
+        final int galNeed = (int) Math.ceil((double)f2 / 350);
+        String outputString = myApp.generateOutputString(length, width, f2, galNeed);
+        myApp.printOutput(outputString);
+    }
+
+    public void printOutput(String outputString) {
+        System.out.println(outputString);
+    }
+
+    public int readLength() {
+        System.out.println("What is the length of the room in feet? ");
+        return in.nextInt();
+    }
+
+    public int readWidth() {
+        System.out.println("What is the width of the room in feet? ");
+        return in.nextInt();
+    }
+
+    public int squareFeet(int length, int width) {
+        return length * width;
+    }
+
+    public String generateOutputString(int length, int width, double f2, int galNeed) {
+        return "You entered dimensions of " + length + " feet by " + width + " feet.\n" +
+                "Your ceiling would be " + f2 + " square feet.\n" +
+                "You will need to purchase " + galNeed + " gallons of paint to cover " + f2 + " square feet.";
     }
 }
